@@ -34,7 +34,7 @@ public final class Sudachi {
      * @param plugin
      */
     public static void init(Plugin plugin, BoardAdapter adapter) {
-        adapter = boardAdapter;
+        boardAdapter = adapter;
         boardUpdateTask = plugin.getServer().getScheduler().runTaskTimer(plugin, new BoardUpdateRunnable(plugin), boardAdapter.getInterval(), boardAdapter.getInterval());
     }
 }

@@ -71,7 +71,7 @@ public final class Sudachi {
         }, plugin);
         plugin.getLogger().info("[sudachi] BoardUpdateRunnable を起動しています...");
         boardUpdateTask = plugin.getServer().getScheduler().runTaskTimer(plugin, new BoardUpdateRunnable(plugin), boardAdapter.getInterval(), boardAdapter.getInterval());
-        plugin.getLogger().info("[medaka] BoardUpdateRunnable を起動しました");
-        plugin.getLogger().info("[medaka] 初期化が完了しました");
+        plugin.getLogger().info("[sudachi] BoardUpdateRunnable を起動しました");
+        plugin.getLogger().info("[sudachi] 初期化が完了しました");
     }
 }

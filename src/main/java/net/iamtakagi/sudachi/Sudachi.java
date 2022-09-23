@@ -33,8 +33,8 @@ public final class Sudachi {
      * 外部から Sudachi.init(org.bukkit.plugin.Plugin); を呼び出すことで処理される
      * @param plugin
      */
-    public static void init(Plugin plugin, BoardAdapter boardAdapter) {
-        boardAdapter = boardAdapter;
+    public static void init(Plugin plugin, BoardAdapter adapter) {
+        adapter = boardAdapter;
         boardUpdateTask = plugin.getServer().getScheduler().runTaskTimer(plugin, new BoardUpdateRunnable(plugin), boardAdapter.getInterval(), boardAdapter.getInterval());
     }
 }

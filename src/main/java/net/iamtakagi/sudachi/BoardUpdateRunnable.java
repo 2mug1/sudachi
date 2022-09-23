@@ -1,15 +1,13 @@
 package net.iamtakagi.sudachi;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+
+import lombok.AllArgsConstructor;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.DisplaySlot;
@@ -17,20 +15,19 @@ import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 
-@Getter
-@RequiredArgsConstructor
-public class BoardManager extends BukkitRunnable {
 
-	private final JavaPlugin plugin;
-	private final Map<UUID, Board> playerBoards = new HashMap<>();
-	private final BoardAdapter adapter;
+@AllArgsConstructor
+public class BoardUpdateRunnable implements Runnable {
+
+	private Plugin plugin;
+
 
 	@Override
 	public void run() {
-		this.adapter.preLoop();
+		Sudachi.getBoardAdapter().preLoop();
 
 		for (Player player : plugin.getServer().getOnlinePlayers()) {
-			Board board = this.playerBoards.get(player.getUniqueId());
+			Board board = Sudachi.getPlayerBoards().get(player.getUniqueId());
 
 			if (board == null) {
 				continue;
@@ -39,15 +36,15 @@ public class BoardManager extends BukkitRunnable {
 			try {
 				Scoreboard scoreboard = board.getScoreboard();
 
-				List<String> scores = this.adapter.getScoreboard(player, board);
+				List<String> scores = Sudachi.getBoardAdapter().getScoreboard(player, board);
 
 				if (scores != null) {
 					Collections.reverse(scores);
 
 					Objective objective = board.getObjective();
 
-					if (!objective.getDisplayName().equals(this.adapter.getTitle(player))) {
-						objective.setDisplayName(this.adapter.getTitle(player));
+					if (!objective.getDisplayName().equals(Sudachi.getBoardAdapter().getTitle(player))) {
+						objective.setDisplayName(Sudachi.getBoardAdapter().getTitle(player));
 					}
 
 					if (scores.isEmpty()) {
@@ -114,7 +111,7 @@ public class BoardManager extends BukkitRunnable {
 					}
 				}
 
-				this.adapter.onScoreboardCreate(player, scoreboard);
+				Sudachi.getBoardAdapter().onScoreboardCreate(player, scoreboard);
 
 				player.setScoreboard(scoreboard);
 			} catch (Exception e) {

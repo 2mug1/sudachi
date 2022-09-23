@@ -8,7 +8,7 @@
 ```xml
  <repository>
   <id>github</id>
-  <name>sudachis</name>
+  <name>sudachi</name>
   <url>https://maven.pkg.github.com/2mug1/sudachi</url>
 </repository>
 

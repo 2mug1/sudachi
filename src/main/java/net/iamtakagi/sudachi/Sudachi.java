@@ -69,6 +69,7 @@ public final class Sudachi {
                 playerBoards.remove(player.getUniqueId());
             }
         }, plugin);
+        plugin.getLogger().info("[sudachi] イベントリスナーを登録しました");
         plugin.getLogger().info("[sudachi] BoardUpdateRunnable を起動しています...");
         boardUpdateTask = plugin.getServer().getScheduler().runTaskTimer(plugin, new BoardUpdateRunnable(plugin), boardAdapter.getInterval(), boardAdapter.getInterval());
         plugin.getLogger().info("[sudachi] BoardUpdateRunnable を起動しました");

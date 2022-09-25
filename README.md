@@ -15,7 +15,7 @@
 <dependency>
   <groupId>net.iamtakagi</groupId>
   <artifactId>sudachi</artifactId>
-  <version>1.0.5</version>
+  <version>1.0.6</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -26,7 +26,7 @@ repositories {
   maven (url = "https://maven.pkg.github.com/2mug1/sudachi")
 }
 dependencies {
-  implementation("net.iamtakagi:sudachi:1.0.5")
+  implementation("net.iamtakagi:sudachi:1.0.6")
 }
 ```
 

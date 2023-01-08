@@ -6,7 +6,7 @@
 
 `pom.xml`
 ```xml
- <repository>
+<repository>
   <id>github</id>
   <name>sudachi</name>
   <url>https://maven.pkg.github.com/2mug1/sudachi</url>
